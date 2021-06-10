@@ -69,8 +69,9 @@ namespace DeteccaoRostoEmguCV
             picImagem.Image = null;
         }
 
-        private void ProcessarImagem(Bitmap bitmap)
+        private void ProcessarImagem(Bitmap btm)
         {
+            Bitmap bitmap = (Bitmap)btm.Clone();
             Image<Bgr, byte> grayImage = new Image<Bgr, byte>(bitmap);
             Rectangle[] rectangles = cascadeClassifier.DetectMultiScale(grayImage, 1.2, 1);
             foreach (var rectangle in rectangles)
